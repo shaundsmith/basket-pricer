@@ -1,5 +1,12 @@
-import {Money} from "../types/Money";
+import Product from "./Product";
 
+/**
+ * The product catalogue.
+ */
 export default interface ProductCatalogue {
-    items: Money
+
+    /**
+     * The list of products in the catalogue.
+     */
+    products: Product[]
 }

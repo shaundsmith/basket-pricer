@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "name": "Baked Beans",
+      "quantity": 7
+    },
+    {
+      "name": "Biscuits",
+      "quantity": 2
+    },
+    {
+      "name": "Shampoo (Large)",
+      "quantity": 3
+    },
+    {
+      "name": "Sardines",
+      "quantity": 2
+    }
+  ]
+}
