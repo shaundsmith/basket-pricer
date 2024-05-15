@@ -11,7 +11,9 @@
 
 ### Installing
 
-1. Clone the project using Git or download it as a zip file: `git clone https://github.com/shaundsmith/basket-pricer.git`
+1. Clone the project using Git or download it as a zip file:
+   1. `git clone https://github.com/shaundsmith/basket-pricer.git`
+   2. [Download from Git](https://github.com/shaundsmith/basket-pricer/archive/refs/heads/main.zip) 
 2. Navigate to the project directory
 3. Run `npm ci` in the root of the project
 
@@ -29,7 +31,7 @@ If further experimentation is required, the following three files can be modifie
 There are two modes for the main class, the `BasketPricer`: a 'Best Offer' mode and an 'Ordered Offer' mode. This was due to uncertainty around one of the requirements. Usually this would require a conversation with a business analyst. Both interpretations of the requirement have been included as part of this coding kata.
 
 The mode can be switched by updating the third parameter of the BasketPricer constructor in `demo/Demo.ts`.
-* `Mode.BEST_OFFER` - This attempts to apply to maximise the discounts for the basket by applying the most beneficial offers first.
+* `Mode.BEST_OFFER` - This attempts to maximise the discounts for the basket by applying the most beneficial offers first.
 * `Mode.ORDERED_OFFERS` - This applies the offers in the order that they are specified in the `BasketPricer` constructor.
 
 ### Testing
