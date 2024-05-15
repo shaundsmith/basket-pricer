@@ -26,6 +26,12 @@ If further experimentation is required, the following three files can be modifie
 * `demo/ProductCatalogue.json` - This contains a JSON representation of the product catalogue.
 * `demo/Offers.ts` - This contains the offers applicable to the baskets.
 
+There are two modes for the main class, the `BasketPricer`: a 'Best Offer' mode and an 'Ordered Offer' mode. This was due to uncertainty around one of the requirements. Usually this would require a conversation with a business analyst. Both interpretations of the requirement have been included as part of this coding kata.
+
+The mode can be switched by updating the third parameter of the BasketPricer constructor in `demo/Demo.ts`.
+* `Mode.BEST_OFFER` - This attempts to apply to maximise the discounts for the basket by applying the most beneficial offers first.
+* `Mode.ORDERED_OFFERS` - This applies the offers in the order that they are specified in the `BasketPricer` constructor.
+
 ### Testing
 
 The unit tests for the project can be run by calling `npm run test`.

@@ -1,6 +1,6 @@
 import * as productCatalogueJson from "./ProductCatalogue.json"
 import * as basketJson from "./Basket.json"
-import BasketPricer from "../src/BasketPricer";
+import BasketPricer, {Mode} from "../src/BasketPricer";
 import Money from "../src/Money";
 import ProductCatalogue from "../src/interfaces/ProductCatalogue";
 import Basket from "../src/interfaces/Basket";
@@ -19,7 +19,7 @@ function buildProductCatalogue(json: any): ProductCatalogue {
 }
 
 
-const pricer = new BasketPricer(buildProductCatalogue(productCatalogueJson), offers)
+const pricer = new BasketPricer(buildProductCatalogue(productCatalogueJson), offers, Mode.BEST_OFFER)
 
 const result = pricer.calculatePrice((basketJson as Basket))
 
