@@ -281,7 +281,18 @@ describe("BasketPricer specifications", () => {
         })
     })
 
-    it("applies the best discounts in best discount mode", () => {
+    it.each([
+        // Discount order agnostic
+        [
+            new BuyXCheapestFreeOffer(["Shampoo (Large)", "Shampoo (Medium)", "Shampoo (Small)"], 3),
+            new FixedPriceOffer("Shampoo (Large)", new Money(250))
+        ],
+        [
+            new FixedPriceOffer("Shampoo (Large)", new Money(250)),
+            new BuyXCheapestFreeOffer(["Shampoo (Large)", "Shampoo (Medium)", "Shampoo (Small)"], 3)
+        ]
+    ])
+    ("applies the best discounts in best discount mode", (firstOffer, secondOffer) => {
 
         const basket: Basket = {
             items: [
@@ -291,10 +302,7 @@ describe("BasketPricer specifications", () => {
                 }
             ]
         }
-        const sut = new BasketPricer(productCatalogue, [
-            new BuyXCheapestFreeOffer(["Shampoo (Large)", "Shampoo (Medium)", "Shampoo (Small)"], 3),
-            new FixedPriceOffer("Shampoo (Large)", new Money(250))
-        ], Mode.BEST_OFFER)
+        const sut = new BasketPricer(productCatalogue, [firstOffer, secondOffer], Mode.BEST_OFFER)
 
         const result = sut.calculatePrice(basket)
 
@@ -327,6 +335,20 @@ describe("BasketPricer specifications", () => {
             total: new Money(700),
             discount: new Money(350)
         })
+    })
+
+    it("requires a product catalogue", () => {
+
+        expect(() => new BasketPricer(null, [
+            new PercentageOffer("Baked Beans", 0.2)
+        ])).toThrow()
+    })
+
+    it("allows no offers to be provided", () => {
+
+        const sut = new BasketPricer(productCatalogue)
+
+        expect(sut.offers).toEqual([])
     })
 
 })

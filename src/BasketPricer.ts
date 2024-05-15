@@ -28,7 +28,7 @@ export default class BasketPricer {
             throw Error("No product catalogue provided")
         }
         this.productCatalogue = productCatalogue
-        this.offers = offers || []
+        this.offers = offers
         this.mode = mode
     }
 
